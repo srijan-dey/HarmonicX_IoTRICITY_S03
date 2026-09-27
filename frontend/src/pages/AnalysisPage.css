@@ -1,0 +1,275 @@
+.analysis-page {
+  padding-top: 96px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+/* Header */
+.analysis-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.analysis-page__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.analysis-page__title svg { color: var(--primary); }
+
+.analysis-page__sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.analysis-page__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.analysis-page__ml-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ml-online { color: var(--success); border-color: hsla(158, 80%, 45%, 0.3); }
+.ml-offline { color: var(--warning); border-color: hsla(38, 95%, 55%, 0.3); }
+
+/* Error bar */
+.analysis-page__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: hsla(355, 90%, 58%, 0.1);
+  border: 1px solid hsla(355, 90%, 58%, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--critical);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.analysis-page__error-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--critical);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.analysis-page__error-close:hover { opacity: 1; }
+
+/* Layout */
+.analysis-page__layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Left column */
+.analysis-page__left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Upload card */
+.analysis-page__upload-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Params */
+.analysis-page__params {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.param-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  min-width: 90px;
+}
+
+.param-chip--small {
+  padding: 5px 10px;
+  min-width: 70px;
+}
+
+.param-chip__label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.param-chip__value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.param-chip--small .param-chip__value { font-size: 12px; }
+
+/* Divider */
+.analysis-page__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.analysis-page__divider::before,
+.analysis-page__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* Sample button */
+.analysis-page__sample-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ECG info bar */
+.analysis-page__ecg-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.analysis-page__ecg-info-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-page__ecg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+
+.analysis-page__ecg-filename {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.analysis-page__ecg-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Stats mini grid */
+.analysis-page__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.stat-mini {
+  padding: 12px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-mini__value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.stat-mini__unit {
+  font-size: 10px;
+  color: var(--primary);
+  opacity: 0.7;
+}
+
+.stat-mini__label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Right column */
+.analysis-page__right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 90px;
+}
+
+.analysis-page__reanalyze {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .analysis-page__layout {
+    grid-template-columns: 1fr;
+  }
+  .analysis-page__right {
+    position: static;
+  }
+  .analysis-page__stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .analysis-page__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
