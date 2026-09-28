@@ -1,0 +1,44 @@
+# CardioSense AI — .gitignore
+
+# Node
+node_modules/
+npm-debug.log*
+.npm
+
+# Build outputs
+dist/
+build/
+.vite/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Environment / secrets
+.env
+.env.local
+.env.production
+
+# Uploads (user ECG files)
+backend/uploads/
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ML models (large binary files)
+ml/models/*.h5
+ml/models/*.pt
+ml/models/*.pkl
