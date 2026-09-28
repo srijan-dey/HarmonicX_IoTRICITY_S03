@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import ecgRoutes from './routes/ecg.js';
 import mlRoutes from './routes/ml.js';
+import harmonicxRoutes from './routes/harmonicx.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 // ── Routes ──────────────────────────────────────────────────
 app.use('/api/ecg', ecgRoutes);
 app.use('/api/ml', mlRoutes);
+app.use('/api/harmonicx', harmonicxRoutes);   // HarmonicX_IoTRICITY_S03 dataset
 
 // ── Health Check ────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
@@ -36,6 +38,7 @@ app.get('/api/health', (req, res) => {
     service: 'CardioSense AI Backend',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
+    datasets: ['harmonicx_s03'],
   });
 });
 
@@ -45,6 +48,7 @@ app.use((req, res) => {
 });
 
 // ── Error Handler ───────────────────────────────────────────
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.error('[Error]', err.message);
   res.status(err.status || 500).json({
@@ -54,7 +58,8 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`\n🫀 CardioSense AI Backend running on http://localhost:${PORT}`);
-  console.log(`   Health: http://localhost:${PORT}/api/health\n`);
+  console.log(`   Health:     http://localhost:${PORT}/api/health`);
+  console.log(`   HarmonicX:  http://localhost:${PORT}/api/harmonicx/summary\n`);
 });
 
 export default app;

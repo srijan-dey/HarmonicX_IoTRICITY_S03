@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { Activity, Brain, Info, Menu, X } from 'lucide-react'
+import { Activity, Brain, Info, Menu, X, Database } from 'lucide-react'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -40,6 +40,10 @@ export default function Navbar() {
             <Brain size={15} />
             Analyze
           </NavLink>
+          <NavLink to="/dataset" className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}>
+            <Database size={15} />
+            Dataset
+          </NavLink>
           <NavLink to="/about" className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}>
             <Info size={15} />
             About
@@ -66,6 +70,7 @@ export default function Navbar() {
         <div className="navbar__mobile-menu">
           <NavLink to="/" className="navbar__mobile-link">Home</NavLink>
           <NavLink to="/analyze" className="navbar__mobile-link">Analyze ECG</NavLink>
+          <NavLink to="/dataset" className="navbar__mobile-link">HarmonicX Dataset</NavLink>
           <NavLink to="/about" className="navbar__mobile-link">About</NavLink>
         </div>
       )}

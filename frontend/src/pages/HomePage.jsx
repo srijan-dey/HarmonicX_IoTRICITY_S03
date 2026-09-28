@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Activity, Brain, Shield, Zap, Upload, ChevronRight, Heart, Cpu, FileText } from 'lucide-react'
+import { Activity, Brain, Shield, Zap, Upload, ChevronRight, Heart, Cpu, FileText, Database } from 'lucide-react'
 import './HomePage.css'
 
 const features = [
@@ -29,22 +29,22 @@ const features = [
     color: 'var(--success)',
   },
   {
+    icon: <Database size={24} strokeWidth={1.5} />,
+    title: 'HarmonicX Dataset',
+    desc: 'Beat-segmented ECG database from IoTRICITY S03 with 60-sample windows and pre-extracted features.',
+    color: 'hsl(180, 80%, 50%)',
+  },
+  {
     icon: <Zap size={24} strokeWidth={1.5} />,
     title: 'Fast Inference',
     desc: 'Python FastAPI ML service delivers inference in under 500ms with full signal preprocessing pipeline.',
     color: 'var(--warning)',
   },
-  {
-    icon: <FileText size={24} strokeWidth={1.5} />,
-    title: 'Export Reports',
-    desc: 'Download annotated ECG charts as PNG. JSON output ready for EHR integration.',
-    color: 'hsl(180, 80%, 50%)',
-  },
 ]
 
 const stats = [
   { value: '360', unit: 'Hz', label: 'Sample Rate' },
-  { value: '10', unit: 'sec', label: 'Analysis Window' },
+  { value: '61', unit: 'beats', label: 'HarmonicX DB' },
   { value: '94%', unit: '', label: 'Accuracy (dev)' },
   { value: '<500', unit: 'ms', label: 'Inference Time' },
 ]
@@ -87,6 +87,7 @@ export default function HomePage() {
             <p className="home__hero-sub">
               Upload your MATLAB ECG CSV, visualize the waveform in clinical detail,
               and let our deep learning engine detect arrhythmias in real time.
+              Powered by the HarmonicX_IoTRICITY_S03 beat dataset.
             </p>
 
             <div className="home__hero-actions">
@@ -101,12 +102,12 @@ export default function HomePage() {
               </motion.button>
               <motion.button
                 className="btn btn-secondary btn-lg"
-                onClick={() => navigate('/about')}
+                onClick={() => navigate('/dataset')}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Learn More
-                <ChevronRight size={18} />
+                <Database size={18} />
+                HarmonicX Data
               </motion.button>
             </div>
           </motion.div>
@@ -199,6 +200,8 @@ export default function HomePage() {
             <div className="home__arch-flow">
               <ArchNode icon={<FileText size={20} />} label="MATLAB CSV" sub="ECG Data" color="var(--text-muted)" />
               <ArchArrow />
+              <ArchNode icon={<Database size={20} />} label="HarmonicX DB" sub="Beat Dataset" color="hsl(180,80%,50%)" />
+              <ArchArrow />
               <ArchNode icon={<Upload size={20} />} label="React Frontend" sub="Vite + Chart.js" color="var(--primary)" />
               <ArchArrow />
               <ArchNode icon={<Heart size={20} />} label="Node.js API" sub="Express Gateway" color="var(--warning)" />
@@ -221,24 +224,35 @@ export default function HomePage() {
             <div className="home__cta-glow" aria-hidden="true" />
             <h2 className="home__cta-title">Ready to analyze your ECG?</h2>
             <p className="home__cta-sub">
-              Upload your MATLAB CSV and get AI-powered insights in seconds.
+              Upload your MATLAB CSV or explore the HarmonicX beat dataset for instant AI-powered insights.
             </p>
-            <motion.button
-              className="btn btn-primary btn-lg"
-              onClick={() => navigate('/analyze')}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <Upload size={18} />
-              Open Analysis Tool
-            </motion.button>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <motion.button
+                className="btn btn-primary btn-lg"
+                onClick={() => navigate('/analyze')}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Upload size={18} />
+                Open Analysis Tool
+              </motion.button>
+              <motion.button
+                className="btn btn-secondary btn-lg"
+                onClick={() => navigate('/dataset')}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Database size={18} />
+                Explore Dataset
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="home__footer">
-        <p>© 2024 CardioSense AI · Built for Iotricity S3 Hackathon · Not a medical device</p>
+        <p>© 2024 CardioSense AI · Built for Iotricity S3 Hackathon · HarmonicX dataset integration · Not a medical device</p>
       </footer>
     </main>
   )

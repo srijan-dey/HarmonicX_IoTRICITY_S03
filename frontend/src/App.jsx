@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import AnalysisPage from './pages/AnalysisPage'
 import AboutPage from './pages/AboutPage'
+import DatasetPage from './pages/DatasetPage'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/analyze" element={<AnalysisPage />} />
+        <Route path="/dataset" element={<DatasetPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>

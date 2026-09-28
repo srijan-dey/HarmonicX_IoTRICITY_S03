@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
-import { Heart, Brain, Code2, Cpu, ExternalLink, Zap, Activity } from 'lucide-react'
+import { Heart, Brain, Code2, Cpu, ExternalLink, Zap, Activity, Database } from 'lucide-react'
 import './AboutPage.css'
 
 const techStack = [
   { layer: 'Frontend', tech: 'React 18 + Vite', detail: 'Chart.js, Framer Motion, React Router', color: 'var(--primary)' },
-  { layer: 'Backend', tech: 'Node.js + Express', detail: 'Multer, CSV-parse, Axios proxy', color: 'var(--warning)' },
-  { layer: 'ML Engine', tech: 'Python + FastAPI', detail: 'NumPy, SciPy (R-peak, HRV, Bandpass)', color: 'hsl(270, 80%, 65%)' },
-  { layer: 'Styling', tech: 'Vanilla CSS', detail: 'Glassmorphism, CSS custom properties', color: 'hsl(180, 80%, 50%)' },
+  { layer: 'Backend', tech: 'Node.js + Express', detail: 'Multer, CSV-parse, Axios proxy, HarmonicX API', color: 'var(--warning)' },
+  { layer: 'ML Engine', tech: 'Python + FastAPI', detail: 'NumPy, SciPy (R-peak, HRV, Bandpass) + Beat features', color: 'hsl(270, 80%, 65%)' },
+  { layer: 'Dataset', tech: 'HarmonicX S03', detail: '60-beat MATLAB ECG segments, 60 samples/beat, 360 Hz', color: 'hsl(180, 80%, 50%)' },
+  { layer: 'Styling', tech: 'Vanilla CSS', detail: 'Glassmorphism, CSS custom properties', color: 'hsl(280, 60%, 60%)' },
 ]
 
 const ecgParams = [
@@ -15,7 +16,7 @@ const ecgParams = [
   { name: 'Bandpass Filter', value: '0.5 – 40 Hz', note: 'Removes baseline wander & noise' },
   { name: 'R-peak Detection', value: 'Pan-Tompkins', note: 'Adapted derivative-squared method' },
   { name: 'HRV Metrics', value: 'SDNN, RMSSD', note: 'Time-domain heart rate variability' },
-  { name: 'ML Model (planned)', value: 'CNN / LSTM', note: 'Trained on MIT-BIH Arrhythmia DB' },
+  { name: 'HarmonicX Features', value: 'RMS, Skewness, Kurtosis, RR', note: 'Pre-extracted from MATLAB dataset' },
 ]
 
 const roadmap = [
@@ -24,7 +25,9 @@ const roadmap = [
   { status: 'done', label: 'R-peak detection & HRV analysis' },
   { status: 'done', label: 'Rule-based rhythm classification' },
   { status: 'done', label: 'Node.js ↔ Python API bridge' },
-  { status: 'progress', label: 'Deep learning model (CNN/LSTM)' },
+  { status: 'done', label: 'HarmonicX_IoTRICITY_S03 dataset integration' },
+  { status: 'done', label: 'Beat-level feature-based AI analysis' },
+  { status: 'progress', label: 'Deep learning model (CNN/LSTM) training' },
   { status: 'progress', label: 'MIT-BIH dataset training pipeline' },
   { status: 'planned', label: 'Multi-lead 12-lead ECG support' },
   { status: 'planned', label: 'PDF report generation' },

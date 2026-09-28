@@ -68,6 +68,23 @@ export default function AnalysisPage() {
     }
   }
 
+  const handleHarmonicXECG = async () => {
+    setError(null)
+    setEcgData(null)
+    setPrediction(null)
+    setIsUploading(true)
+    try {
+      const response = await axios.get('/api/harmonicx/waveform')
+      setEcgData({ ...response.data, filename: `HarmonicX_${response.data.record}.csv` })
+      await runPrediction(response.data)
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to load HarmonicX ECG — ensure backend is running.')
+    } finally {
+      setIsUploading(false)
+    }
+  }
+
+
   const runPrediction = async (data) => {
     setIsPredicting(true)
     try {
@@ -169,7 +186,7 @@ export default function AnalysisPage() {
                     <UploadZone onUpload={handleUpload} isLoading={isUploading} />
 
                     <div className="analysis-page__divider">
-                      <span>or</span>
+                      <span>or try built-in signals</span>
                     </div>
 
                     <button
@@ -179,6 +196,16 @@ export default function AnalysisPage() {
                     >
                       <Activity size={16} />
                       Load Demo ECG (Synthetic Sinus Rhythm)
+                    </button>
+
+                    <button
+                      className="btn btn-secondary analysis-page__sample-btn"
+                      onClick={handleHarmonicXECG}
+                      disabled={isUploading}
+                      style={{ borderColor: 'hsla(180, 80%, 50%, 0.4)', color: 'hsl(180, 80%, 50%)' }}
+                    >
+                      <Brain size={16} />
+                      Load HarmonicX ECG (IoTRICITY S03 Dataset)
                     </button>
                   </div>
                 </motion.div>
